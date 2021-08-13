@@ -1,8 +1,8 @@
 # Define the logic of the application
-from inspect import EndOfBlock
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
+from werkzeug.urls import url_parse
 from flask.helpers import get_flashed_messages
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 from flask_login.utils import logout_user
 from flask_migrate import current
 from myapp import app
@@ -11,6 +11,7 @@ from myapp.models import User
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     user = {'username': 'natalia'}
     posts = [
