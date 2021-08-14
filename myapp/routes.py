@@ -1,13 +1,19 @@
 # Define the logic of the application
 from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
-from flask.helpers import get_flashed_messages
 from flask_login import login_user, current_user, logout_user, login_required
-from flask_login.utils import logout_user
-from flask_migrate import current
+from datetime import datetime
 from myapp import app, db
 from myapp.forms import LoginForm, RegistrationForm
 from myapp.models import User
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
+
 
 @app.route('/')
 @app.route('/index')
