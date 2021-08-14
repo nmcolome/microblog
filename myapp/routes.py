@@ -1,5 +1,6 @@
 # Define the logic of the application
 from flask import render_template, flash, redirect, url_for, request
+import flask
 from werkzeug.urls import url_parse
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import datetime
@@ -92,3 +93,33 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+@app.route('/follow/<username>')
+@login_required
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash(f'User {username} not found')
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash(f'You cannot follow yourself!')
+        return redirect(url_for('user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash(f'You are now following {username}.')
+    return redirect(url_for('user', username=username))
+
+@app.route('/unfollow/<username>')
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash(f'User {username} not found')
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash(f'You cannot unfollow yourself!')
+        return redirect(url_for('user', username=username))
+    current_user.unfollow(user)
+    db.session.commit()
+    flash(f'You are not following {username}.')
+    return redirect(url_for('user', username=username))
