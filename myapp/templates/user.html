@@ -8,12 +8,5 @@
     </tr>
   </table>
   <hr>
-  <table>
-    {% for post in posts %}
-    <tr valign="top">
-      <td><img src="{{ post.author.avatar(36) }}"></td>
-      <td>{{ post.author.username }} says: <b>{{ post.body }}</b></td>
-    </tr>
-    {% endfor %}
-  </table>
+  {% include '_post.html' %}
 {% endblock content %}
