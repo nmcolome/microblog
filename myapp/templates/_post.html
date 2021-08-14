@@ -2,7 +2,17 @@
   {% for post in posts %}
   <tr valign="top">
     <td><img src="{{ post.author.avatar(36) }}"></td>
-    <td>{{ post.author.username }} says: <b>{{ post.body }}</b></td>
+    <td>
+      <a href="{{ url_for('user', username=post.author.username) }}">{{ post.author.username }}</a>
+      says: <b>{{ post.body }}</b>
+    </td>
   </tr>
   {% endfor %}
 </table>
+
+{% if prev_url %}
+  <a href="{{ prev_url }}">Newer posts</a>
+{% endif %}
+{% if next_url %}
+  <a href="{{ next_url }}">Older posts</a>
+{% endif %}
