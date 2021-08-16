@@ -1,5 +1,5 @@
 # Define the logic of the application
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from werkzeug.urls import url_parse
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_babel import _, get_locale
@@ -9,6 +9,7 @@ from myapp import app, db
 from myapp.forms import EditProfileForm, LoginForm, PostForm, RegistrationForm, ResetPasswordRequestForm, ResetPasswordForm
 from myapp.models import User, Post
 from myapp.email import send_password_reset_email
+from myapp.translate import translate
 
 
 @app.before_request
@@ -167,3 +168,11 @@ def reset_password(token):
         flash(_('Your password has been reset.'))
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({'text': translate(request.form['text'],
+                                      request.form['source_language'],
+                                      request.form['dest_language'])})
+
