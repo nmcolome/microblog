@@ -79,4 +79,4 @@ def create_app(config_class=Config):
 def get_locale():
     return request.accept_languages.best_match(current_app.config['LANGUAGES'])
 
-from myapp import routes, models, errors
+from myapp import models
