@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-08-15 01:14-0600\n"
+"POT-Creation-Date: 2021-08-15 18:38-0600\n"
 "PO-Revision-Date: 2021-08-15 01:20-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -34,7 +34,7 @@ msgstr "Contraseña"
 msgid "Remember Me"
 msgstr "Recordarme"
 
-#: myapp/forms.py:16 myapp/routes.py:63 myapp/templates/login.html:4
+#: myapp/forms.py:16 myapp/routes.py:68 myapp/templates/login.html:4
 msgid "Sign In"
 msgstr "Ingresar"
 
@@ -46,7 +46,7 @@ msgstr "Email"
 msgid "Repeat Password"
 msgstr "Repetir Contraseña"
 
-#: myapp/forms.py:23 myapp/routes.py:82 myapp/templates/register.html:4
+#: myapp/forms.py:23 myapp/routes.py:87 myapp/templates/register.html:4
 msgid "Register"
 msgstr "Registrarse"
 
@@ -74,65 +74,73 @@ msgstr "Dí algo"
 msgid "Request Password Reset"
 msgstr "Pedir una nueva contraseña"
 
-#: myapp/routes.py:30
+#: myapp/routes.py:35
 msgid "Your post is now live!"
 msgstr "¡Tu artículo ha sido publicado!"
 
-#: myapp/routes.py:36 myapp/templates/base.html:21
+#: myapp/routes.py:41 myapp/templates/base.html:21
 msgid "Home"
 msgstr "Inicio"
 
-#: myapp/routes.py:45 myapp/templates/base.html:22
+#: myapp/routes.py:50 myapp/templates/base.html:22
 msgid "Explore"
 msgstr "Explorar"
 
-#: myapp/routes.py:56
+#: myapp/routes.py:61
 msgid "Invalid username or password"
 msgstr "Nombre de usuario o contraseña inválidos"
 
-#: myapp/routes.py:80
+#: myapp/routes.py:85
 msgid "Congratulations, you are now a registered user!"
 msgstr "¡Felicitaciones, ya eres un usuario registrado!"
 
-#: myapp/routes.py:102
+#: myapp/routes.py:107
 msgid "Your changes have been saved."
 msgstr "Tus cambios han sido salvados."
 
-#: myapp/routes.py:107 myapp/templates/edit_profile.html:4
+#: myapp/routes.py:112 myapp/templates/edit_profile.html:4
 msgid "Edit Profile"
 msgstr "Editar Perfil"
 
-#: myapp/routes.py:114 myapp/routes.py:129
+#: myapp/routes.py:119 myapp/routes.py:134
 msgid "User %(username) not found"
 msgstr "El usuario %(username) no ha sido encontrado."
 
-#: myapp/routes.py:117
+#: myapp/routes.py:122
 msgid "You cannot follow yourself!"
 msgstr "¡No te puedes seguir a tí mismo!"
 
-#: myapp/routes.py:121
+#: myapp/routes.py:126
 msgid "You are now following %(username)!"
 msgstr "¡Ahora estás siguiendo a %(username)s!"
 
-#: myapp/routes.py:132
+#: myapp/routes.py:137
 msgid "You cannot unfollow yourself!"
 msgstr "¡No te puedes dejar de seguir a tí mismo!"
 
-#: myapp/routes.py:136
+#: myapp/routes.py:141
 msgid "You are not following %(username)!"
 msgstr "No estás siguiendo a %(username)!"
 
-#: myapp/routes.py:148
+#: myapp/routes.py:153
 msgid "Check your email for the instructions to reset your password."
 msgstr "Busca en tu email las instrucciones para crear una nueva contraseña"
 
-#: myapp/routes.py:150
+#: myapp/routes.py:155
 msgid "Reset Password"
 msgstr "Nueva Contraseña"
 
-#: myapp/routes.py:163
+#: myapp/routes.py:168
 msgid "Your password has been reset."
 msgstr "Tu contraseña ha sido cambiada."
+
+#: myapp/translate.py:10
+msgid "Error: the translation service is not configured."
+msgstr "Error: el servicio de traducción no está configurado."
+
+#: myapp/translate.py:20
+msgid "Error: the translation service failed."
+msgstr "Error: el servicio de traducción falló."
 
 #: myapp/templates/404.html:4
 msgid "Not Found"
@@ -155,11 +163,15 @@ msgstr "El administrador ha sido notificado. ¡Lamentamos la inconveniencia!"
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s dijo %(when)s"
 
-#: myapp/templates/_post.html:28
+#: myapp/templates/_post.html:25
+msgid "Translate"
+msgstr "Traducir"
+
+#: myapp/templates/_post.html:37
 msgid "Newer posts"
 msgstr "Artículos siguientes"
 
-#: myapp/templates/_post.html:33
+#: myapp/templates/_post.html:42
 msgid "Older posts"
 msgstr "Artículos previos"
 
@@ -178,6 +190,10 @@ msgstr "Perfil"
 #: myapp/templates/base.html:29
 msgid "Logout"
 msgstr "Salir"
+
+#: myapp/templates/base.html:67
+msgid "Error: Could not contact server."
+msgstr "Error: el servidor no pudo ser contactado."
 
 #: myapp/templates/index.html:4
 #, python-format
